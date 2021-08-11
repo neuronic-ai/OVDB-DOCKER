@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 15
+sleep 30
 cd /usr/src/app
 python manage.py makemigrations
 python manage.py migrate
