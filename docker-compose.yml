@@ -2,6 +2,7 @@ version: '2.4'
 services:
   app:
     build: ./app
+    container_name: ovdb_app
     environment:
       - MYSQL_HOST=db
       - MYSQL_USER=ovdatabridge
@@ -15,7 +16,7 @@ services:
     restart: always
   redis:
     image: redis:alpine
-    container_name: redis_db
+    container_name: ovdb_redis
     command: redis-server --appendonly yes
     environment:
       - REDIS_HOST=redis
@@ -28,6 +29,7 @@ services:
     restart: always
   db:
     image: datajoint/mysql:5.7
+    container_name: ovdb_db
     environment:
       - MYSQL_USER=ovdatabridge
       - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
