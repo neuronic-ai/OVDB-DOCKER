@@ -19,4 +19,4 @@ COPY ./entrypoint.sh .
 # copy project
 COPY . .
 
-CMD ["/usr/src/app/entrypoint.sh"]
+CMD ["/usr/src/wsocket/entrypoint.sh"]
