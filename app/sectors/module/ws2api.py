@@ -1,13 +1,15 @@
+import os
 import websocket
 import _thread as thread
 from django.core.cache import cache
 import time
 import json
 from datetime import datetime
+import requests
 
 from . import log
 
-from sectors.common import admin_config
+from sectors.common import admin_config, error
 
 
 class Bridge:
@@ -32,6 +34,31 @@ class Bridge:
         self.REDIS_QUEUE = []
         self.REDIS_CACHE_TTL = self.bridge_info['frequency']
 
+        self.WS_HOST = os.getenv('WS_HOST', admin_config.WS_HOST_URL)
+
+    def send_command(self, message_type, data=None):
+        res = requests.post(f'{self.WS_HOST}wsocket/send_command', json={
+            'type': message_type,
+            'bridge_info': {
+                'id': self.bridge_info['id'],
+                'src_address': self.bridge_info['src_address']
+            },
+            'data': data
+        })
+
+        return res.json()
+
+    def notify_event(self, event):
+        data = event['data']
+        if event['type'] == 'on_open':
+            self.on_open(None)
+        elif event['type'] == 'on_close':
+            self.on_close(None, data['close_status_code'], data['close_msg'])
+        elif event['type'] == 'on_message':
+            self.on_message(None, data['message'])
+        elif event['type'] == 'on_error':
+            self.on_error(None, data['error'])
+
     def run_forever(self):
         self.ws.run_forever()
 
@@ -54,14 +81,15 @@ class Bridge:
             count += 1
 
     def open(self):
-        if self.ws is None:
-            self.ws = websocket.WebSocketApp(self.bridge_info['src_address'],
-                                             on_open=self.on_open,
-                                             on_message=self.on_message,
-                                             on_error=self.on_error,
-                                             on_close=self.on_close)
-        if not self.connection_status:
-            thread.start_new_thread(self.run_forever, ())
+        # if self.ws is None:
+        #     self.ws = websocket.WebSocketApp(self.bridge_info['src_address'],
+        #                                      on_open=self.on_open,
+        #                                      on_message=self.on_message,
+        #                                      on_error=self.on_error,
+        #                                      on_close=self.on_close)
+        # if not self.connection_status:
+        #     thread.start_new_thread(self.run_forever, ())
+        self.send_command('open')
 
         self.dumper_status = True
         thread.start_new_thread(self.dumper, ())
@@ -72,7 +100,8 @@ class Bridge:
     def close(self):
         self.connection_status = False
         self.dumper_status = False
-        self.ws.close()
+        # self.ws.close()
+        self.send_command('close')
 
     def is_connected(self):
         while self.connection_status is None:
@@ -88,10 +117,15 @@ class Bridge:
     def send_message(self, message):
         if self.connection_status:
             self.add_cache(f'WS:Send - {message}')
-            try:
-                self.ws.send(message)
-            except Exception as e:
-                self.add_cache(f'WS:Send - Exception - {e}')
+            # try:
+            #     self.ws.send(message)
+            # except Exception as e:
+            #     self.add_cache(f'WS:Send - Exception - {e}')
+            res = self.send_command('send_message', {
+                'message': message
+            })
+            if res['text'] != error.SUCCESS:
+                self.add_cache(f"WS:Send - Exception - {res['text']}")
 
     def on_message(self, ws, message):
         if self.connection_status:

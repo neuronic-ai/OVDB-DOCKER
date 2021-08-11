@@ -9,10 +9,19 @@ services:
       - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
       - MYSQL_DATABASE=ovdb
       - MYSQL_PORT=3306
+      - WS_HOST=wsocket
     ports:
       - 8000:8000
     depends_on:
       - db
+    restart: always
+  wsocket:
+    build: ./wsocket
+    container_name: ovdb_wsocket
+    environment:
+      - OV_HOST=app
+    ports:
+      - 8000:8000
     restart: always
   redis:
     image: redis:alpine

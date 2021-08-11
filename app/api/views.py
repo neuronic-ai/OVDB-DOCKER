@@ -32,6 +32,25 @@ def run_module(request):
         }, status=status.HTTP_201_CREATED)
 
 
+@api_view(['POST'])
+def notify_event(request):
+    if isinstance(request.body, bytes):
+        message = request.body.decode()
+    elif isinstance(request.body, str):
+        message = request.body
+    else:
+        message = str(request.body)
+
+    message = json.loads(message)
+
+    admin_config.BRIDGE_HANDLE.notify_event(message)
+
+    return JsonResponse({
+        'status_code': status.HTTP_200_OK,
+        'text': error.SUCCESS
+    }, status=status.HTTP_200_OK)
+
+
 # Test function
 def send_message(request, param1, param2):
     res = admin_config.BRIDGE_HANDLE.send_message(param1, param2)

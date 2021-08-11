@@ -126,3 +126,10 @@ class BridgeQueue:
             if b_obj['id'] == bridge_id and b_obj['status']:
                 b_obj['obj'].remove_ws_client(ws_id)
                 break
+
+    def notify_event(self, event):
+        bridge_id = event['bridge_id']
+        for b_obj in self.bridges_obj:
+            if b_obj['id'] == bridge_id:
+                b_obj['obj'].notify_event(event)
+                break
