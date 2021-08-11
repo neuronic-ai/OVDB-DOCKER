@@ -1,0 +1,40 @@
+
+version: '2.4'
+services:
+  app:
+    build: ./app
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=ovdatabridge
+      - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
+      - MYSQL_DATABASE=ovdatabridge
+      - MYSQL_PORT=3306
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: always
+  redis:
+    image: redis:alpine
+    container_name: redis_db
+    command: redis-server --appendonly yes
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - CACHE_LOCATION=redis://redis:6379/
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis_data:/data
+    restart: always
+  db:
+    image: datajoint/mysql:5.7
+    environment:
+      - MYSQL_USER=ovdatabridge
+      - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
+      - MYSQL_DATABASE=ovdatabridge
+      - MYSQL_ROOT_PASSWORD=jQEbw5VVHesHnZsG7tS4
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql

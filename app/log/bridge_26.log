@@ -1,0 +1,40 @@
+{"date": "08/03/2021, 15:51:58", "data": "WS:Open - Connected"}
+{"date": "08/03/2021, 15:51:58", "data": "WS:Recv - {\"error\":\"Domain not allowed for this api key\"}"}
+{"date": "08/03/2021, 15:51:58", "data": "WH:Send - {'content': '{\"error\":\"Domain not allowed for this api key\"}'}"}
+{"date": "08/03/2021, 15:51:58", "data": "WH:Recv - {'status_code': 204, 'text': ''}"}
+{"date": "08/03/2021, 15:51:58", "data": "WS:Closed - 1000 - "}
+{"date": "08/03/2021, 15:53:02", "data": "WS:Open - Connected"}
+{"date": "08/03/2021, 15:53:02", "data": "WS:Recv - {\"error\":\"Domain not allowed for this api key\"}"}
+{"date": "08/03/2021, 15:53:02", "data": "WH:Send - {'content': '{\"error\":\"Domain not allowed for this api key\"}'}"}
+{"date": "08/03/2021, 15:53:03", "data": "WH:Recv - {'status_code': 204, 'text': ''}"}
+{"date": "08/03/2021, 15:53:03", "data": "WS:Closed - 1000 - "}
+{"date": "08/03/2021, 15:53:12", "data": "WS:Open - Connected"}
+{"date": "08/03/2021, 15:53:12", "data": "WS:Recv - {\"error\":\"Domain not allowed for this api key\"}"}
+{"date": "08/03/2021, 15:53:12", "data": "WH:Send - {'content': '{\"error\":\"Domain not allowed for this api key\"}'}"}
+{"date": "08/03/2021, 15:53:12", "data": "WH:Recv - {'status_code': 204, 'text': ''}"}
+{"date": "08/03/2021, 15:53:12", "data": "WS:Closed - 1000 - "}
+{"date": "08/03/2021, 21:16:01", "data": "WS:Open - Connected"}
+{"date": "08/03/2021, 21:16:01", "data": "WS:Recv - {\"error\":\"Domain not allowed for this api key\"}"}
+{"date": "08/03/2021, 21:16:01", "data": "WH:Send - {'content': '{\"error\":\"Domain not allowed for this api key\"}'}"}
+{"date": "08/03/2021, 21:16:01", "data": "WH:Recv - {'status_code': 204, 'text': ''}"}
+{"date": "08/03/2021, 21:16:01", "data": "WS:Closed - 1000 - "}
+{"date": "08/03/2021, 21:50:23", "data": "WS:Open - Connected"}
+{"date": "08/03/2021, 21:50:23", "data": "WS:Recv - {\"error\":\"Domain not allowed for this api key\"}"}
+{"date": "08/03/2021, 21:50:23", "data": "WH:Send - {'content': '{\"error\":\"Domain not allowed for this api key\"}'}"}
+{"date": "08/03/2021, 21:50:23", "data": "WH:Recv - {'status_code': 204, 'text': ''}"}
+{"date": "08/03/2021, 21:50:23", "data": "WS:Closed - 1000 - "}
+{"date": "08/06/2021, 11:53:46", "data": "WS:Open - Connected"}
+{"date": "08/06/2021, 11:53:46", "data": "WS:Recv - {\"error\":\"Domain not allowed for this api key\"}"}
+{"date": "08/06/2021, 11:53:46", "data": "WH:Send - {'content': '{\"error\":\"Domain not allowed for this api key\"}'}"}
+{"date": "08/06/2021, 11:53:46", "data": "WH:Recv - {'status_code': 204, 'text': ''}"}
+{"date": "08/06/2021, 11:53:46", "data": "WS:Closed - 1000 - "}
+{"date": "08/09/2021, 01:46:25", "data": "WS:Open - Connected"}
+{"date": "08/09/2021, 01:46:25", "data": "WS:Recv - {\"error\":\"Domain not allowed for this api key\"}"}
+{"date": "08/09/2021, 01:46:25", "data": "WH:Send - {'content': '{\"error\":\"Domain not allowed for this api key\"}'}"}
+{"date": "08/09/2021, 01:46:26", "data": "WH:Recv - {'status_code': 204, 'text': ''}"}
+{"date": "08/09/2021, 01:46:26", "data": "WS:Closed - 1000 - "}
+{"date": "08/09/2021, 02:34:49", "data": "WS:Open - Connected"}
+{"date": "08/09/2021, 02:34:49", "data": "WS:Recv - {\"error\":\"Domain not allowed for this api key\"}"}
+{"date": "08/09/2021, 02:34:49", "data": "WH:Send - {'content': '{\"error\":\"Domain not allowed for this api key\"}'}"}
+{"date": "08/09/2021, 02:34:50", "data": "WH:Recv - {'status_code': 204, 'text': ''}"}
+{"date": "08/09/2021, 02:34:50", "data": "WS:Closed - 1000 - "}
