@@ -25,7 +25,7 @@ class Bridge:
         self.OV_HOST = os.getenv('OV_HOST', admin_config.OV_HOST_URL)
 
     def notify_event(self, message_type, data=None):
-        res = requests.post(f'{self.OV_HOST}/api/notify_event', json={
+        res = requests.post(f'http://{self.OV_HOST}/api/notify_event', json={
             'type': message_type,
             'bridge_id': self.bridge_info['id'],
             'data': data

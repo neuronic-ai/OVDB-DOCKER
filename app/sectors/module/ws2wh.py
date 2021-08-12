@@ -35,7 +35,7 @@ class Bridge:
         self.WS_HOST = os.getenv('WS_HOST', admin_config.WS_HOST_URL)
 
     def send_command(self, message_type, data=None):
-        res = requests.post(f'{self.WS_HOST}/wsocket/send_command', json={
+        res = requests.post(f'http://{self.WS_HOST}/wsocket/send_command', json={
             'type': message_type,
             'bridge_info': {
                 'id': self.bridge_info['id'],

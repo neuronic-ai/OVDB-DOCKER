@@ -11,12 +11,12 @@ def run_module():
 
     if admin_config.BRIDGE_HANDLE is None:
         WS_HOST = os.getenv('WS_HOST', admin_config.WS_HOST_URL)
-        res = requests.post(f'{WS_HOST}/wsocket/send_command', json={
+        res = requests.post(f'http://{WS_HOST}/wsocket/send_command', json={
             'type': 'init',
             'bridge_info': None,
             'data': None
         })
-        
+
         print('Module start...')
         try:
             admin_config.BRIDGE_HANDLE = bridge.BridgeQueue()
