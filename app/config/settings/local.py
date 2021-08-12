@@ -3,8 +3,10 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bridge.vantagecrypto.com']
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
+hosts = os.getenv('ALLOWED_HOSTS', '')
+if hosts:
+    ALLOWED_HOSTS.extend(json.loads(hosts))
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

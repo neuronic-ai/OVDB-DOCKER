@@ -9,6 +9,7 @@ services:
       - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
       - MYSQL_DATABASE=ovdb
       - MYSQL_PORT=3306
+      - ALLOWED_HOSTS=['bridge.vantagecrypto.com', 'app']
       - WS_HOST=wsocket:8001
     ports:
       - 8000:8000
