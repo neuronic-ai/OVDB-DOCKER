@@ -9,7 +9,7 @@ services:
       - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
       - MYSQL_DATABASE=ovdb
       - MYSQL_PORT=3306
-      - WS_HOST=wsocket
+      - WS_HOST=http://wsocket
     ports:
       - 8000:8000
     depends_on:
@@ -19,7 +19,7 @@ services:
     build: ./wsocket
     container_name: ovdb_wsocket
     environment:
-      - OV_HOST=app
+      - OV_HOST=http://app
     ports:
       - 8001:8001
     restart: always
