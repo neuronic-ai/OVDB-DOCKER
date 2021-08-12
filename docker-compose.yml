@@ -29,7 +29,7 @@ services:
       - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
       - MYSQL_DATABASE=ovdb
       - MYSQL_PORT=3306
-      - ALLOWED_HOSTS=webhook
+      - ALLOWED_HOSTS=bridge.vantagecrypto.com
       - OV_APP_HOST=app:8000
     ports:
       - 8003:8003
