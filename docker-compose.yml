@@ -9,8 +9,6 @@ services:
       - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
       - MYSQL_DATABASE=ovdb
       - MYSQL_PORT=3306
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
       - CACHE_LOCATION=redis://redis:6379/
       - ALLOWED_HOSTS=bridge.vantagecrypto.com,app
       - OV_HOST_URL=https://bridge.vantagecrypto.com/

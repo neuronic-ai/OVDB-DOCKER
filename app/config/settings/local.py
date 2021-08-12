@@ -22,17 +22,6 @@ DATABASES = {
     }
 }
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [(os.getenv('REDIS_HOST', '35.193.25.247'), os.getenv('REDIS_PORT', 6379))],
-            # 'capacity': 1500,
-            # 'expiry': 10,
-        },
-    },
-}
-
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
@@ -42,5 +31,3 @@ CACHES = {
         }
     }
 }
-
-ASGI_APPLICATION = 'config.asgi.application'
