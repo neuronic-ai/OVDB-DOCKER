@@ -57,7 +57,7 @@ class BridgeQueue:
             for b_obj in self.bridges_obj:
                 b_obj['status'] = b_obj['obj'].is_connected()
 
-            time.sleep(60)
+            time.sleep(1)
 
     def start_bridge_by_id(self, bridge_id):
         new_bridge = True
