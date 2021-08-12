@@ -33,7 +33,7 @@ def process_webhook(request, param1, param2):
     # admin_config.BRIDGE_HANDLE.send_message(bridge.id, message)
 
     OV_APP_HOST = os.getenv('OV_APP_HOST', admin_config.OV_APP_HOST_URL)
-    res = requests.post(f'http://{OV_APP_HOST}/api/notify_event', json={
+    res = requests.post(f'http://{OV_APP_HOST}/event/notify_event', json={
         'type': 'on_message',
         'bridge_id': bridge.id,
         'data': {
