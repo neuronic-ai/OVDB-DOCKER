@@ -1,4 +1,4 @@
-# Dockerizing Django with Redis, MySQL
+# Dockerizing Django with App, Api, Websocket, Webhook, Redis, MySQL
 
 ### Production
 
