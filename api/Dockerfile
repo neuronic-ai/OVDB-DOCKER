@@ -2,7 +2,7 @@
 FROM python:3.6
 
 # set work directory
-WORKDIR /usr/src/webhook
+WORKDIR /usr/src/api
 
 # set environment variables
 
@@ -19,4 +19,4 @@ COPY ./entrypoint.sh .
 # copy project
 COPY . .
 
-CMD ["/usr/src/webhook/entrypoint.sh"]
+CMD ["/usr/src/api/entrypoint.sh"]

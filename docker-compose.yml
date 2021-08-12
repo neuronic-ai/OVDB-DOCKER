@@ -23,6 +23,21 @@ services:
     volumes:
       - ./app_log:/usr/src/app/log
     restart: always
+  api:
+    build: ./api
+    container_name: ovdb_api
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=ovdb
+      - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
+      - MYSQL_DATABASE=ovdb
+      - MYSQL_PORT=3306
+      - CACHE_LOCATION=redis://redis:6379/
+      - ALLOWED_HOSTS=bridge.vantagecrypto.com
+      - OV_APP_HOST=app:8000
+    ports:
+      - 8001:8001
+    restart: always
   webhook:
     build: ./webhook
     container_name: ovdb_webhook
