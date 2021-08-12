@@ -1,5 +1,4 @@
 from .base import *
-import json
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -7,7 +6,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 hosts = os.getenv('ALLOWED_HOSTS', '')
 if hosts:
-    ALLOWED_HOSTS.extend(json.loads(hosts))
+    ALLOWED_HOSTS.extend(hosts.split(','))
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
