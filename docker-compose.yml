@@ -19,6 +19,7 @@ services:
       - db
     volumes:
       - ./app_log:/usr/src/app/log
+      - ./app_log_zip:/user/src/app/sectors/static/log_zip
     restart: always
   api:
     build: ./api
