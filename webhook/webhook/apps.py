@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WsocketConfig(AppConfig):
+class WebhookConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'wsocket'
+    name = 'webhook'
