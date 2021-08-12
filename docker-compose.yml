@@ -13,9 +13,8 @@ services:
       - REDIS_PORT=6379
       - CACHE_LOCATION=redis://redis:6379/
       - ALLOWED_HOSTS=bridge.vantagecrypto.com,app
-      - OV_API_HOST=wsocket:8001
-      - OV_WEBSOCKET_HOST=wsocket:8002
-      - OV_WEBHOOK_HOST=wsocket:8003
+      - OV_HOST_URL=https://bridge.vantagecrypto.com/
+      - OV_WEBSOCKET_HOST=websocket:8002
     ports:
       - 8000:8000
     depends_on:
@@ -37,6 +36,22 @@ services:
       - OV_APP_HOST=app:8000
     ports:
       - 8001:8001
+    restart: always
+  websocket:
+    build: ./websocket
+    container_name: ovdb_websocket
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=ovdb
+      - MYSQL_PASSWORD=z63p7GU3UbXBtyWvLqEZcL79vswwZQMW
+      - MYSQL_DATABASE=ovdb
+      - MYSQL_PORT=3306
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ALLOWED_HOSTS=bridge.vantagecrypto.com,websocket
+      - OV_APP_HOST=app:8000
+    ports:
+      - 8002:8002
     restart: always
   webhook:
     build: ./webhook

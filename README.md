@@ -2,7 +2,7 @@
 
 ### Production
 
-Uses redis + mysql.
+Uses app + api + websocket + webhook + redis + mysql.
 
 1. Build the images and run the containers:
 
