@@ -1,22 +1,12 @@
-import os
 from sectors.common import admin_config
 from sectors.module import bridge
 import _thread as thread
 import time
-import requests
 
 
 def run_module():
     time.sleep(5)
-
     if admin_config.BRIDGE_HANDLE is None:
-        WS_HOST = os.getenv('WS_HOST', admin_config.WS_HOST_URL)
-        res = requests.post(f'http://{WS_HOST}/wsocket/send_command', json={
-            'type': 'init',
-            'bridge_info': None,
-            'data': None
-        })
-
         print('Module start...')
         try:
             admin_config.BRIDGE_HANDLE = bridge.BridgeQueue()

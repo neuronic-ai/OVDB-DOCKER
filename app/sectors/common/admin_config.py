@@ -2,9 +2,6 @@ import config.settings.base as base
 
 # HOST_URL = 'http://127.0.0.1:8000/'
 HOST_URL = 'https://bridge.vantagecrypto.com/'
-
-WS_HOST_URL = '127.0.0.1:8001'
-
 TRACE_MODE = False
 DELETE_LOG_AFTER_BRIDGE_DELETED = True
 

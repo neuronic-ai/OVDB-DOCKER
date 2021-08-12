@@ -25,6 +25,11 @@ class Bridge:
         self.cache = self.log.get_last_log()
         self.ws_clients = []
 
+    def notify_event(self, event):
+        data = event['data']
+        if event['type'] == 'on_message':
+            self.send_message(data['message'])
+
     def open(self):
         self.connection_status = True
         self.connection_text = 'WH:Open - Ready'
