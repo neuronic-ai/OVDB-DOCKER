@@ -19,6 +19,7 @@ services:
     build: ./wsocket
     container_name: ovdb_wsocket
     environment:
+      - ALLOWED_HOST=wsocket:8001
       - OV_HOST=app:8000
     ports:
       - 8001:8001
