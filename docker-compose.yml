@@ -13,6 +13,9 @@ services:
       - ALLOWED_HOSTS=bridge.vantagecrypto.com,app
       - OV_HOST_URL=https://bridge.vantagecrypto.com/
       - OV_WEBSOCKET_HOST=websocket:8002
+      - ADMIN_USER=admin
+      - ADMIN_EMAIL=admin@gmail.com
+      - ADMIN_PASSWORD=xvX9BCE7RXdMzG4V
     ports:
       - 8000:8000
     depends_on:
