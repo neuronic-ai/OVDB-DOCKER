@@ -69,8 +69,8 @@ def check_validity_remote_file(request, url):
         req.urlretrieve(url, filename)
         os.remove(filename)
         return 'success', 200
-    except:
-        return error.INVALID_FILE_WEB_URL, 403
+    except Exception as e:
+        return str(e), 403
 
 
 def get_remote_file_data(request, bridge_info):
