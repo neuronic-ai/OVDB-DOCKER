@@ -61,6 +61,7 @@ def send_ws_message(group_name, content):
 
 def check_validity_remote_file(request, url):
     try:
+        print(url)
         if url.lower()[url.rfind('.') + 1:] not in ['txt', 'csv', 'zip', 'gzip', 'js']:
             return error.INVALID_FILE_WEB_TYPE, 403
 
@@ -69,7 +70,8 @@ def check_validity_remote_file(request, url):
         req.urlretrieve(url, filename)
         os.remove(filename)
         return 'success', 200
-    except:
+    except Exception as e:
+        print(e)
         return error.INVALID_FILE_WEB_URL, 403
 
 
