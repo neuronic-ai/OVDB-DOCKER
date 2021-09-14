@@ -48,13 +48,20 @@ def process_api(request, param1, param2):
     redis_cache_id = f'{admin_config.BRIDGE_REDIS_CACHE_PREFIX}_{bridge.id}'
     if redis_cache_id in cache:
         data = cache.get(redis_cache_id)
+        if bridge.type == 7:    # File to API
+            cache.set(redis_cache_id, [])
     else:
         data = []
 
     bridge.api_calls += 1
     bridge.save()
 
-    return JsonResponse({
-        'frequency (s)': bridge.frequency,
-        'content': data
-    }, status=status.HTTP_200_OK)
+    if bridge.type == 7:    # File to API
+        return JsonResponse({
+            'content': data
+        }, status=status.HTTP_200_OK)
+    else:
+        return JsonResponse({
+            'frequency (s)': bridge.frequency,
+            'content': data
+        }, status=status.HTTP_200_OK)
