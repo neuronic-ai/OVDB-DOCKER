@@ -2,6 +2,7 @@ import os
 from threading import Lock
 from datetime import datetime
 from zipfile import ZIP_DEFLATED, ZipFile
+import json
 
 from sectors.common import admin_config
 
@@ -32,9 +33,15 @@ class File:
     def write(self, data):
         self.mutex.acquire()
         try:
+            j_data = data
+            try:
+                j_data = json.loads(data)
+            except:
+                pass
+
             f_data = {
-                'date': datetime.utcnow().strftime('%m/%d/%Y %H:%M:%S'),
-                'data': data
+                "date": datetime.utcnow().strftime('%m/%d/%Y %H:%M:%S'),
+                "data": j_data
             }
 
             if self.ext == 'csv':
