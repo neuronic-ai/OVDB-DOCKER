@@ -37,13 +37,14 @@ class File:
                 data = json.loads(data)
             except:
                 pass
+
             f_data = json.dumps({
                 'date': datetime.utcnow().strftime('%m/%d/%Y %H:%M:%S'),
                 'data': data
             })
 
             if self.ext == 'csv':
-                self.file.write(f"'{f_data}',")
+                self.file.write(f'{f_data},')
             else:
                 self.file.write(f_data)
                 self.file.write('\n')
