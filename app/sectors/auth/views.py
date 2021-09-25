@@ -11,7 +11,8 @@ from sectors.common import admin_config, error, mail, common
 
 from db.models import (
     TBLUser,
-    TBLSetting
+    TBLSetting,
+    TBLTransaction,
 )
 
 
@@ -62,6 +63,7 @@ class SignupView(TemplateView):
         user = TBLUser()
         user.email = email
         user.username = username
+        user.balance = 20
         user.set_password(password)
 
         setting = list(TBLSetting.objects.all().values())
@@ -76,6 +78,14 @@ class SignupView(TemplateView):
             })
 
         user.save()
+
+        transaction = TBLTransaction()
+        transaction.user_id = user.id
+        transaction.amount = 20
+        transaction.balance = 20
+        transaction.description = 'Add Credit'
+        transaction.notes = 'Free Credit'
+        transaction.save()
 
         django_login(self.request, user)
         return redirect('/data_bridges')
