@@ -40,8 +40,8 @@ class File:
                 pass
 
             f_data = {
-                "date": datetime.utcnow().strftime('%m/%d/%Y %H:%M:%S'),
-                "data": j_data
+                'date': datetime.utcnow().strftime('%m/%d/%Y %H:%M:%S'),
+                'data': j_data
             }
 
             if self.ext == 'csv':
