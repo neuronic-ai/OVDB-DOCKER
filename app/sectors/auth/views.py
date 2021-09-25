@@ -71,6 +71,7 @@ class SignupView(TemplateView):
                 'max_active_bridges': setting['max_active_bridges'],
                 'rate_limit_per_url': setting['rate_limit_per_url'],
                 'allowed_frequency': setting['allowed_frequency'],
+                'allowed_file_flush': setting['allowed_file_flush'],
                 'available_bridges': setting['available_bridges']
             })
 
