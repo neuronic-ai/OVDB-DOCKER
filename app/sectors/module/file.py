@@ -33,15 +33,9 @@ class File:
     def write(self, data):
         self.mutex.acquire()
         try:
-            j_data = data
-            try:
-                j_data = json.loads(data)
-            except:
-                pass
-
             f_data = {
-                'date': datetime.utcnow().strftime('%m/%d/%Y %H:%M:%S'),
-                'data': j_data
+                "date": datetime.utcnow().strftime("%m/%d/%Y %H:%M:%S"),
+                "data": data
             }
 
             if self.ext == 'csv':
