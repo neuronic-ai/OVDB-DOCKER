@@ -88,6 +88,6 @@ services:
       - MYSQL_DATABASE=ovdb
       - MYSQL_ROOT_PASSWORD=jQEbw5VVHesHnZsG7tS4
     ports:
-      - "3306:3306"
+      - 3306:3306
     volumes:
       - ./mysql_data:/var/lib/mysql
