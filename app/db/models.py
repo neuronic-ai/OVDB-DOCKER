@@ -8,6 +8,7 @@ from sectors.common import admin_config
 class TBLUser(AbstractUser):
     balance = models.FloatField(default=0)
     spent = models.FloatField(default=0)
+    test_field = models.FloatField(default=0)
     reset_link = models.CharField(max_length=255, default='')
     permission = models.TextField(default=json.dumps({
         'max_active_bridges': admin_config.DEFAULT_MAX_ACTIVE_BRIDGES,
