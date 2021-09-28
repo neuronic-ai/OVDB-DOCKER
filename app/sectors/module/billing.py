@@ -44,9 +44,11 @@ class Billing:
     def run_cp(self):
         while True:
             utc_now = datetime.utcnow()
+            print(utc_now.hour, utc_now.minute)
             if 23 <= utc_now.hour < 24 and 50 <= utc_now.minute < 60:
                 setting = list(TBLSetting.objects.all().values())
                 if len(setting) == 0:
+                    print('setting continue')
                     continue
 
                 price_setting = setting[0]['price_setting']
@@ -54,6 +56,7 @@ class Billing:
                 bridges = TBLBridge.objects.all()
                 for bridge in bridges:
                     bill_api_calls = bridge.api_calls - bridge.billed_calls
+                    print(bridge.id, bridge.billed_calls)
                     if bill_api_calls > 0:
                         conversion_price = 0
                         if not price_setting['disable_pricing']:
