@@ -79,11 +79,6 @@ class Bridge:
                 self.add_cache(f'REDIS QUEUE:Append - Ignored! - Out of Funds!')
                 return
 
-            try:
-                message = json.loads(message)
-            except:
-                pass
-
             if self.prev_file_data:
                 if self.prev_file_data == message:
                     self.add_cache(f'REDIS QUEUE:Append - Ignored!')

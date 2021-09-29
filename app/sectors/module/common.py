@@ -85,6 +85,16 @@ def get_remote_file_data(request, bridge_info):
         except:
             return error.UNABLE_TO_READ_FILE, 403
 
-        return data, 200
+        data_array = data.split('\n')
+        json_data_array = []
+        for d in data_array:
+            if d:
+                try:
+                    json_d = json.loads(d)
+                except:
+                    json_d = d
+                json_data_array.append(json_d)
+
+        return json_data_array, 200
     except:
         return error.INVALID_FILE_WEB_URL, 403
