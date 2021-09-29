@@ -7,7 +7,10 @@ from sectors.common import admin_config, error
 
 
 def get_formatted_content(message, bridge_info):
-    data = message
+    try:
+        data = json.loads(message)
+    except:
+        data = message
     format_json = json.loads(bridge_info['format'])
     search_word = format_json['search_word']
     replace_word = format_json['replace_word']
