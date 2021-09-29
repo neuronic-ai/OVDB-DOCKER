@@ -1,13 +1,13 @@
 import json
 import _thread as thread
 import requests
-import os
+from datetime import datetime
 
-from sectors.common import admin_config, common, error
+from sectors.common import admin_config, error
 
 
 def get_formatted_content(message, bridge_info):
-    content = {'content': message}
+    data = message
     format_json = json.loads(bridge_info['format'])
     search_word = format_json['search_word']
     replace_word = format_json['replace_word']
@@ -31,13 +31,16 @@ def get_formatted_content(message, bridge_info):
         if replaceable:
             if replace_word:
                 try:
-                    content = json.loads(replace_word)
+                    data = json.loads(replace_word)
                 except:
-                    content = {'content': replace_word}
+                    data = replace_word
     else:
         replaceable = True
 
-    return replaceable, content
+    return replaceable, {
+        'date': datetime.utcnow().strftime('%m/%d/%Y %H:%M:%S'),
+        'data': data
+    }
 
 
 def thread_swm(group_name, content):
