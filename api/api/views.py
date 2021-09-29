@@ -57,7 +57,9 @@ def process_api(request, param1, param2):
     bridge.save()
 
     if bridge.type == 7:    # File to API
-        return JsonResponse(data, status=status.HTTP_200_OK)
+        return JsonResponse({
+            'content': data
+        }, status=status.HTTP_200_OK)
     else:
         return JsonResponse({
             'frequency (s)': bridge.frequency,
