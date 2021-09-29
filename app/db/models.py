@@ -38,7 +38,6 @@ class TBLBridge(models.Model):
     is_active = models.BooleanField(default=True)
     is_status = models.IntegerField(default=0)
     monthly_usage = models.IntegerField(default=0)
-    test_field = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'TBLBRIDGE'
