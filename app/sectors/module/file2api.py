@@ -74,6 +74,10 @@ class Bridge:
 
     def set_redis_cache(self, message):
         try:
+            if not message:
+                self.add_cache(f'REDIS QUEUE:Append - Ignored! - Empty Data!')
+                return
+
             bridge = TBLBridge.objects.get(id=self.bridge_info['id'])
             if bridge.is_status == 1:
                 self.add_cache(f'REDIS QUEUE:Append - Ignored! - Out of Funds!')
@@ -81,7 +85,7 @@ class Bridge:
 
             if self.prev_file_data:
                 if self.prev_file_data == message:
-                    self.add_cache(f'REDIS QUEUE:Append - Ignored!')
+                    self.add_cache(f'REDIS QUEUE:Append - Ignored! - Same Data!')
                     return
 
             if self.REDIS_CACHE_ID not in cache:
