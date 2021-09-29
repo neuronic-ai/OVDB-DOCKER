@@ -8,7 +8,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_PORT=3306
       - CACHE_LOCATION=redis://redis:6379/
       - ALLOWED_HOSTS=${ALLOWED_HOSTS},app
       - OV_HOST_URL=${HOST_URL}
@@ -33,7 +33,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_PORT=3306
       - CACHE_LOCATION=redis://redis:6379/
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - OV_APP_HOST=app:8000
@@ -48,7 +48,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_PORT=3306
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - ALLOWED_HOSTS=${ALLOWED_HOSTS},websocket
@@ -64,7 +64,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_PORT=${MYSQL_PORT}
+      - MYSQL_PORT=3306
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - OV_APP_HOST=app:8000
     ports:
@@ -87,7 +87,5 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    ports:
-      - 3306:3306
     volumes:
       - ./mysql_data:/var/lib/mysql

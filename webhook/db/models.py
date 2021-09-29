@@ -38,6 +38,7 @@ class TBLBridge(models.Model):
     billed_calls = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
     is_status = models.IntegerField(default=0)
+    monthly_usage = models.IntegerField(default=0)
 
     class Meta:
         managed = False
