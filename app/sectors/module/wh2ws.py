@@ -70,7 +70,6 @@ class Bridge:
 
             replaceable, content = common.get_formatted_content(message, self.bridge_info)
             if replaceable:
-                content = json.dumps(content)
                 self.add_cache(f'WS:Send - {content}')
 
                 for ws_id in self.ws_clients:
