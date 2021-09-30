@@ -107,7 +107,7 @@ def save_bridge(request):
             bridge.file_format = params['file_format']
 
         bridge_qty = TBLBridge.objects.filter(user_id=request.user.id, is_active=True).count()
-        if bridge.is_active:
+        if int(params['id']) == 0:
             bridge_qty += 1
 
         max_active_bridges = json.loads(request.user.permission)['max_active_bridges']
