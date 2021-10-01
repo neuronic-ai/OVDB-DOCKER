@@ -50,7 +50,7 @@ class Billing:
 
     def available_cp(self):
         utc_now = datetime.utcnow()
-        if 23 <= utc_now.hour < 24 and 50 <= utc_now.minute < 60:
+        if utc_now.minute >= 50:
             return True
         else:
             return False
