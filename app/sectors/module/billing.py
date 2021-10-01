@@ -68,7 +68,7 @@ class Billing:
         transaction = TBLTransaction()
         transaction.user_id = user_id
         transaction.mode = mode
-        transaction.amount = amount
+        transaction.amount = -amount
         transaction.balance = balance
         transaction.description = description
         transaction.notes = notes
