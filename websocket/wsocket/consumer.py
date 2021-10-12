@@ -44,11 +44,11 @@ class BridgeConsumer(WebsocketConsumer):
         #     pass
 
     def notify(self, event):
-        new_event = event.copy
-        del new_event['notify']
-        print(event)
-        print(new_event)
-        self.send(text_data=json.dumps(new_event))
+        # new_event = event.copy
+        # del new_event['notify']
+        # print(event)
+        # print(new_event)
+        self.send(text_data=json.dumps(event))
 
     def receive(self, text_data=None, bytes_data=None):
         pass
