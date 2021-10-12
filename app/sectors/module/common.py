@@ -101,4 +101,4 @@ def get_remote_file_data(request, bridge_info):
 
 
 def make_hashable(d):
-    return (frozenset(x.iteritems()) for x in d)
+    return (frozenset(x.items()) for x in d)
