@@ -100,5 +100,11 @@ def get_remote_file_data(request, bridge_info):
         return error.INVALID_FILE_WEB_URL, 403
 
 
-def make_hashable(d):
-    return (frozenset(x.items()) for x in d)
+def get_diff_lists(request, f_list, s_list):
+    r_list = []
+    for s in s_list:
+        if s not in f_list:
+            r_list.append(s)
+
+    return r_list
+

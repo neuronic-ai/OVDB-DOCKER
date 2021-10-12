@@ -89,7 +89,7 @@ class Bridge:
 
             new_message = message
             if self.prev_file_data:
-                new_message = list(set(common.make_hashable(message)) - set(common.make_hashable(self.prev_file_data)))
+                new_message = common.get_diff_lists(None, self.prev_file_data, message)
                 if not new_message:
                     self.add_cache(f'WS:Send - Ignored! - Same Data!')
                     return
