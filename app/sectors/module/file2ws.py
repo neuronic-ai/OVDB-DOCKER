@@ -100,8 +100,9 @@ class Bridge:
 
             self.add_cache(f'WS:Send - {new_message}')
 
-            for ws_id in self.ws_clients:
-                common.send_ws_message(ws_id, {'data': new_message})
+            # for ws_id in self.ws_clients:
+            #     common.send_ws_message(ws_id, {'data': new_message})
+            common.send_ws_message(f'{admin_config.BRIDGE_CONSUMER_PREFIX}_{bridge.id}', {'data': new_message})
 
             bridge.api_calls += 1
             bridge.save()

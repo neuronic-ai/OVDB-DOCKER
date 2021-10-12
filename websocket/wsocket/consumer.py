@@ -15,7 +15,8 @@ class BridgeConsumer(WebsocketConsumer):
             bridge = TBLBridge.objects.get(dst_address__contains=self.scope['path'], is_active=True)
 
             self.bridge_id = bridge.id
-            self.group_name = f'{admin_config.BRIDGE_CONSUMER_PREFIX}_{bridge.id}_{common.generate_random_string(6)}'
+            # self.group_name = f'{admin_config.BRIDGE_CONSUMER_PREFIX}_{bridge.id}_{common.generate_random_string(6)}'
+            self.group_name = f'{admin_config.BRIDGE_CONSUMER_PREFIX}_{bridge.id}'
             async_to_sync(self.channel_layer.group_add)(self.group_name, self.channel_name)
             self.accept()
 
