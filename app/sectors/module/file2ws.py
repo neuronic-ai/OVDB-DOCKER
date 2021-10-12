@@ -82,6 +82,10 @@ class Bridge:
 
     def send_message(self, message):
         try:
+            if not message:
+                self.add_cache(f'WS:Send - Ignored! - Empty Data!')
+                return
+
             bridge = TBLBridge.objects.get(id=self.bridge_info['id'])
             if bridge.is_status == 1:
                 self.add_cache(f'WS:Send - Ignored! - Out of Funds!')
