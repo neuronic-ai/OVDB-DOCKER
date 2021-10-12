@@ -20,38 +20,35 @@ class BridgeConsumer(WebsocketConsumer):
             async_to_sync(self.channel_layer.group_add)(self.group_name, self.channel_name)
             self.accept()
 
-            # admin_config.BRIDGE_HANDLE.add_ws_client(self.bridge_id, self.group_name)
-
-            res = requests.post(f'http://{admin_config.OV_APP_HOST_URL}/event/notify_event', json={
-                'type': 'on_add_ws_client',
-                'bridge_id': bridge.id,
-                'data': {
-                    'group_name': self.group_name
-                }
-            })
+            # res = requests.post(f'http://{admin_config.OV_APP_HOST_URL}/event/notify_event', json={
+            #     'type': 'on_add_ws_client',
+            #     'bridge_id': bridge.id,
+            #     'data': {
+            #         'group_name': self.group_name
+            #     }
+            # })
         except:
             self.close()
 
     def disconnect(self, code):
         self.close()
-        try:
-            # admin_config.BRIDGE_HANDLE.remove_ws_client(self.bridge_id, self.group_name)
-
-            res = requests.post(f'http://{admin_config.OV_APP_HOST_URL}/event/notify_event', json={
-                'type': 'on_remove_ws_client',
-                'bridge_id': self.bridge_id,
-                'data': {
-                    'group_name': self.group_name
-                }
-            })
-        except:
-            pass
+        # try:
+        #     res = requests.post(f'http://{admin_config.OV_APP_HOST_URL}/event/notify_event', json={
+        #         'type': 'on_remove_ws_client',
+        #         'bridge_id': self.bridge_id,
+        #         'data': {
+        #             'group_name': self.group_name
+        #         }
+        #     })
+        # except:
+        #     pass
 
     def notify(self, event):
-        text_data = json.dumps({
-            'data': event['data']
-        })
-        self.send(text_data=text_data)
+        new_event = event.copy
+        del new_event['notify']
+        print(event)
+        print(new_event)
+        self.send(text_data=json.dumps(new_event))
 
     def receive(self, text_data=None, bytes_data=None):
         pass
