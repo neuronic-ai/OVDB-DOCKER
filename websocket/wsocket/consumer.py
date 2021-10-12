@@ -45,9 +45,10 @@ class BridgeConsumer(WebsocketConsumer):
 
     def notify(self, event):
         new_event = event.copy()
-        print(event)
+        print(event, flush=True)
+        print(new_event, flush=True)
         del new_event['notify']
-        print(new_event)
+        print(new_event, flush=True)
         self.send(text_data=json.dumps(new_event))
 
     def receive(self, text_data=None, bytes_data=None):
