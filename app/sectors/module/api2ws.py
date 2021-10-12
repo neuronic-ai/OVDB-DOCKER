@@ -50,7 +50,7 @@ class Bridge:
                 try:
                     self.add_cache(f"API:Call - {self.bridge_info['src_address']}")
                     res = requests.get(self.bridge_info['src_address'], verify=False)
-                    self.send_message(res.text)
+                    self.send_message(res.json())
                 except Exception as e:
                     self.add_cache(f'API:Call - Exception - {e}')
 
