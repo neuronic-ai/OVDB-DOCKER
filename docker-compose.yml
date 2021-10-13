@@ -76,8 +76,9 @@ services:
     command: redis-server --appendonly yes
     ports:
       - 6379:6379
-#    volumes:
-#      - ./redis_data:/data
+    volumes:
+      - redis-data:/var/lib/redis
+      - redis.conf:/usr/local/etc/redis/redis.conf
     restart: always
   db:
     image: datajoint/mysql:5.7
