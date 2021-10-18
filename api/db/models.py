@@ -16,6 +16,7 @@ class TBLUser(AbstractUser):
         'allowed_file_flush': admin_config.DEFAULT_ALLOWED_FILE_FLUSH,
         'available_bridges': admin_config.DEFAULT_AVAILABLE_BRIDGE
     }))
+    unique_id = models.CharField(max_length=255, default='')
 
     class Meta:
         managed = False
@@ -85,3 +86,15 @@ class TBLTransaction(models.Model):
     class Meta:
         managed = False
         db_table = 'TBLTRANSACTION'
+
+
+class TBLApiKey(models.Model):
+    user = models.ForeignKey(TBLUser, on_delete=models.CASCADE, blank=True, null=True)
+    name = models.CharField(max_length=255, default='')
+    unique_id = models.CharField(max_length=255, default='')
+    api_key = models.CharField(max_length=255, default='')
+    permission = models.JSONField(default=dict)
+
+    class Meta:
+        managed = False
+        db_table = 'TBLAPIKEY'
