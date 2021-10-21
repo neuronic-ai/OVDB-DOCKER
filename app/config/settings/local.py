@@ -14,6 +14,7 @@ if hosts:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'CONN_MAX_AGE': 3600,
         'HOST': os.getenv('MYSQL_HOST', '127.0.0.1'),
         'NAME': os.getenv('MYSQL_DATABASE', 'ovdb'),
         'USER': os.getenv('MYSQL_USER', 'root'),
